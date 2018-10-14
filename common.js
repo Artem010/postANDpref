@@ -1,4 +1,4 @@
-function translate (){
+function _translate (){
 	if ($('.answer')) $('.answer').remove();	/*Если существует div с классом answer то он удаляется*/
 
 	var expression = $('input[type="text"]').val();	/*Берется выражения из input*/
