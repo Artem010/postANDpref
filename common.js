@@ -77,3 +77,58 @@ function _translate (){
 		$('body').append('<p class=answer>Answer: ' + postfixList.join('') + '</p>');	/*в div выводиться соединенные элементы массива с перобразованными элементами*/
 	}
 }
+
+function _translateInf(){
+	if ($('.answer')) $('.answer').remove();	/*Если существует div с классом answer то он удаляется*/
+
+	var expression = $('input[name="toInf"]').val();	/*Берется выражения из input*/
+	expression = expression.toLowerCase().replace(/\s/g, '');	/*Приимает нижниый регистр и удаляются пробелы*/
+
+	var opSctack = [];	/*Массив (типо стек) куда записаваются операторы*/
+	var tokenList = expression.split('');	/*Массив элементов выражения*/
+
+	var form = $('input[name="r2"]');	
+	if (form[0].checked){	/*Если выбрано из постфиксной*/
+
+		for (var token = 0; token < tokenList.length; token++){	/*Перебор каждого элемента выражения слева на право*/
+
+			if (tokenList[token] != '-' && tokenList[token] != '+' && tokenList[token] != '*' && tokenList[token] != '/' && tokenList[token] != '(' && tokenList[token] != ')'){			/*Если в массиве, элемент[token] != операторам*/
+				opSctack.push(tokenList[token]);	/*Записывается в конец массива как опернанд*/
+
+			}else{
+				if (opSctack.length > 0){	/*Если массив с опернандами не пуст */
+					var i1 = opSctack.pop();	/*Первый опернанд с конца удлаяется и записывается в i1*/
+					var i2 = opSctack.pop();	/*Второй опернанд с конца удлаяется и записывается в i2*/
+					var c = i2 + tokenList[token] + i1;	/*Записываются со знаком tokenList[token]*/
+					c = '(' + c + ')';
+					opSctack.push(c);	/*Выражение записывается как элемент в конец*/
+				}
+			}
+		}
+		
+		$('body').append('<p class=answer>Answer: ' + opSctack.join('') + '</p>');	/*в div выводиться соединенные элементы массива с перобразованными элементами*/
+	
+	}else{
+
+		for (var token = tokenList.length; token >= 0; token--){	/*Перебор каждого элемента выражения справа на лево*/
+			if (tokenList[token] != '-' && tokenList[token] != '+' && tokenList[token] != '*' && tokenList[token] != '/' && tokenList[token] != '(' && tokenList[token] != ')'){			/*Если в массиве, элемент[token] != операторам*/
+				opSctack.push(tokenList[token]);
+
+			}else{
+				if (opSctack.length > 0){	/*Если массив с опернандами не пуст */
+					var i1 = opSctack.pop();	/*Первый опернанд с конца удлаяется и записывается в i1*/
+					var i2 = opSctack.pop();	/*Второй опернанд с конца удлаяется и записывается в i2*/
+					var c = i1 + tokenList[token] + i2;		/*Записываются со знаком tokenList[token]*/
+					if ((tokenList.length - token) != tokenList.length){
+						c = '(' + c + ')';
+					console.log(tokenList.length - token);
+					}
+					opSctack.push(c);	/*Выражение записывается как элемент в конец*/
+				}
+			}
+		}
+
+		$('body').append('<p class=answer>Answer: ' + opSctack.join('') + '</p>');	/*в div выводиться соединенные элементы массива с перобразованными элементами*/
+
+	}
+}
