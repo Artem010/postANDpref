@@ -9,29 +9,42 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<!-- BOOTSTRAP -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<style>
+	body{
+		font-size: 16px;
+		margin-top: 1%;
+	}
+	.answer{
+		margin: 10px 0 10px 0;
+	}
+	</style>
 </head>
 <body>
 	<div class="container">
-		<div class="row text-center">
-			<div class="col-md-6">
-				<input type="radio" checked="true" name='r1' value='postfix'>To postfix
-				<input type="radio" name='r1' value='prefix'>To prefix
-				<br>
-				<input type="text" value="a*b+c*d/e">
-				<button onclick="_translate()">Translate</button>
-			</div>
-			<div class="col-md-6">
-				<input type="radio" name='r2' value='postfix'>From postfix
-				<input type="radio" checked="true" name='r2' value='prefix'>From prefix
-				<br>
-				<input type="text" name='toInf' value="+a*bc">
-				<button onclick="_translateInf()">Translate</button>
-			</div>
+		<div class="row">
+			<form>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<input type="radio" name='r1' value='postfix' checked="true" >To postfix
+						<input type="radio" name='r1' value='prefix'>To prefix
+						<br>
+						<input class="form-control" type="text" value="(a+b-c*d)/e">
+					</div>
+					<button type="button" class="btn btn-success" onclick="_translate()">Translate</button>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<input type="radio" name='r2' value='postfix' checked="true" >From postfix
+						<input type="radio" name='r2' value='prefix'>From prefix
+						<br>
+						<input class="form-control" type="text" name='toInf' value="">
+					</div>
+					<button type="button" class="btn btn-success" onclick="_translateInf()">Translate</button>
+				</div>
+			</form>
 		</div>
 	</div>
 		
-		
-
-		<script src="common.js"></script>
+	<script src="common.js"></script>
 </body>
 </html>
