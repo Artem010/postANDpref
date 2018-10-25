@@ -100,7 +100,8 @@ function _translateInf(){
 					var i1 = opSctack.pop();	/*Первый опернанд с конца удлаяется и записывается в i1*/
 					var i2 = opSctack.pop();	/*Второй опернанд с конца удлаяется и записывается в i2*/
 					var c = i2 + tokenList[token] + i1;	/*Записываются со знаком tokenList[token]*/
-					c = '(' + c + ')';
+					if ((tokenList.length - token) != tokenList.length){
+						c = '(' + c + ')';
 					opSctack.push(c);	/*Выражение записывается как элемент в конец*/
 				}
 			}
@@ -121,7 +122,6 @@ function _translateInf(){
 					var c = i1 + tokenList[token] + i2;		/*Записываются со знаком tokenList[token]*/
 					if ((tokenList.length - token) != tokenList.length){
 						c = '(' + c + ')';
-					console.log(tokenList.length - token);
 					}
 					opSctack.push(c);	/*Выражение записывается как элемент в конец*/
 				}
