@@ -43,7 +43,7 @@ function _translate (){
 			postfixList.push(opSctack.pop());	/*То они с конца удаляются и записывабтся в конец преобразованного выражения*/
 		}
 		
-		$('body').append('<p class=answer>Answer: ' + postfixList.join('') + '</p>');	/*в div выводиться соединенные элементы массива с перобразованными элементами*/
+		$('body .container').append('<p class="answer text-primary ">Answer: ' + postfixList.join('') + '</p>');	/*в div выводиться соединенные элементы массива с перобразованными элементами*/
 
 	}else{	/*Если выбрано префиксное преобразование*/
 
@@ -74,7 +74,7 @@ function _translate (){
 			postfixList.unshift(opSctack.shift());	/*То они начиная с начала массива записывабтся в конец преобразованного выражения и удаляются*/
 
 		}
-		$('body').append('<p class=answer>Answer: ' + postfixList.join('') + '</p>');	/*в div выводиться соединенные элементы массива с перобразованными элементами*/
+		$('body .container').append('<p class="answer text-primary ">Answer: ' + postfixList.join('') + '</p>');	/*в div выводиться соединенные элементы массива с перобразованными элементами*/
 	}
 }
 
@@ -100,14 +100,15 @@ function _translateInf(){
 					var i1 = opSctack.pop();	/*Первый опернанд с конца удлаяется и записывается в i1*/
 					var i2 = opSctack.pop();	/*Второй опернанд с конца удлаяется и записывается в i2*/
 					var c = i2 + tokenList[token] + i1;	/*Записываются со знаком tokenList[token]*/
-					if ((tokenList.length - token) != tokenList.length){
+					// if (token != (tokenList.length - 1)){
 						c = '(' + c + ')';
+					// }
 					opSctack.push(c);	/*Выражение записывается как элемент в конец*/
 				}
 			}
 		}
 		
-		$('body').append('<p class=answer>Answer: ' + opSctack.join('') + '</p>');	/*в div выводиться соединенные элементы массива с перобразованными элементами*/
+		$('body .container').append('<p class="answer text-primary ">Answer: ' + opSctack.join('') + '</p>');	/*в div выводиться соединенные элементы массива с перобразованными элементами*/
 	
 	}else{
 
@@ -120,15 +121,15 @@ function _translateInf(){
 					var i1 = opSctack.pop();	/*Первый опернанд с конца удлаяется и записывается в i1*/
 					var i2 = opSctack.pop();	/*Второй опернанд с конца удлаяется и записывается в i2*/
 					var c = i1 + tokenList[token] + i2;		/*Записываются со знаком tokenList[token]*/
-					if ((tokenList.length - token) != tokenList.length){
+					// if ((tokenList.length - token) != tokenList.length){
 						c = '(' + c + ')';
-					}
+					// }
 					opSctack.push(c);	/*Выражение записывается как элемент в конец*/
 				}
 			}
 		}
 
-		$('body').append('<p class=answer>Answer: ' + opSctack.join('') + '</p>');	/*в div выводиться соединенные элементы массива с перобразованными элементами*/
+		$('body .container').append('<p class="answer text-primary ">Answer: ' + opSctack.join('') + '</p>');	/*в div выводиться соединенные элементы массива с перобразованными элементами*/
 
 	}
 }
